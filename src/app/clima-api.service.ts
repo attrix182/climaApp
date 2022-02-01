@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import '../environment';
+import { environment } from '../environment';
 
 @Injectable()
 export class ClimaApiService {
-  urlApi: string = `api.openweathermap.org/data/2.5/weather?q=`;
+  urlApi: string = `https://api.openweathermap.org/data/2.5/weather?q=`;
 
-  APIkey = apiKey;
+  APIkey = environment.apiKey;
 
   constructor(private http: HttpClient) {}
 
   getClimaByCity(city) {
-    this.http.get(`${this.urlApi}/${city}&appid=${this.APIkey}`);
+    return this.http.get(`${this.urlApi}${city}&appid=${this.APIkey}`);
   }
 }

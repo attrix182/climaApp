@@ -8,9 +8,17 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ClimaCardComponent } from './clima-card/clima-card.component';
 import { ClimaSearchComponent } from './clima-search/clima-search.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ClimaApiService } from './clima-api.service';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot([]), CommonModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot([]),
+    CommonModule,
+    HttpClientModule,
+  ],
   declarations: [
     AppComponent,
     HelloComponent,
@@ -18,5 +26,6 @@ import { ClimaSearchComponent } from './clima-search/clima-search.component';
     ClimaSearchComponent,
   ],
   bootstrap: [AppComponent],
+  providers: [ClimaApiService],
 })
 export class AppModule {}
