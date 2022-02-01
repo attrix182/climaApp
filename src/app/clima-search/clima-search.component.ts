@@ -15,10 +15,5 @@ export class ClimaSearchComponent {
 
   public search() {
     this.router.navigate([], { queryParams: { city: this.value } });
-
-    this.climaSVC.getClimaByCity(this.value).subscribe((result: any) => {
-      this.resultado = result;
-      console.log(this.resultado);
-    });
   }
 }

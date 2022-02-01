@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClimaApiService } from '../clima-api.service';
 
 @Component({
   selector: 'app-clima-card',
@@ -7,14 +8,27 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./clima-card.component.css'],
 })
 export class ClimaCardComponent implements OnInit {
-  @Input() city: any;
+  city: any;
+  resultado: any = {};
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private climaSVC: ClimaApiService
+  ) {
     this.route.queryParams.subscribe((params) => {
       this.city = params['city'];
+      if (this.city) {
+        this.getClima(this.city);
+      }
     });
-    console.log(this.city);
   }
 
   ngOnInit() {}
+
+  getClima(city) {
+    this.climaSVC.getClimaByCity(city).subscribe((result: any) => {
+      this.resultado = result;
+      console.log(this.resultado);
+    });
+  }
 }
