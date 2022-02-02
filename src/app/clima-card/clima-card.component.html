@@ -1,6 +1,9 @@
-<strong>
-  {{ city }}
-  <div *ngIf="resultado.main">
-    {{ resultado.main.temp }}
+<div class="container card center mt-1 pulse" style="max-width:40%;">
+  <div class="title">
+    {{ city | titlecase }}
   </div>
-</strong>
+
+  <div *ngIf="resultado.main" class="subtitle">
+    {{ resultado.main.temp | toCelcius | number : '1.2-2' }}°
+  </div>
+</div>
