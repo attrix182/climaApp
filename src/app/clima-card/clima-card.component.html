@@ -1,13 +1,21 @@
-<div *ngIf="city" class="container card center mt-1" style="max-width:40%;">
+<div *ngIf="city" class="container center mt-1" style="max-width:40%;">
   <div class="subtitle">
     {{ city | titlecase }}
   </div>
   <div *ngIf="resultado.main" class="info">
-    <div class="subtitle">
+    <div class="title">
       {{ resultado.main.temp | toCelcius | number: '1.2-2' }}°
     </div>
     <div class="weather">
+      <div class="icono">
+        <i [ngClass]="icono"></i>
+      </div>
       {{ resultado.weather[0].description | titlecase }}
     </div>
   </div>
 </div>
+
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+/>
