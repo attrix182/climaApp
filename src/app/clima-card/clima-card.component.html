@@ -1,17 +1,21 @@
-<div *ngIf="city" class="container center mt-1" style="max-width:40%;">
+<div
+  *ngIf="city"
+  class="container card center weather mt-1"
+>
   <div class="subtitle">
     {{ city | titlecase }}
   </div>
+
   <div *ngIf="resultado.main" class="info">
+    <i [ngClass]="icono"></i>
+
     <div class="title">
       {{ resultado.main.temp | toCelcius | number: '1.2-2' }}°
     </div>
-    <div class="weather">
-      <div class="icono">
-        <i [ngClass]="icono"></i>
-      </div>
+
+    <p class="description">
       {{ resultado.weather[0].description | titlecase }}
-    </div>
+    </p>
   </div>
 </div>
 
