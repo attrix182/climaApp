@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Params, Router } from '@angular/router';
-import { ClimaApiService } from '../clima-api.service';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-clima-search',
@@ -9,9 +8,14 @@ import { ClimaApiService } from '../clima-api.service';
 })
 export class ClimaSearchComponent {
   value: Params;
-  resultado;
+ 
 
-  constructor(private router: Router, private climaSVC: ClimaApiService) {}
+  constructor(private router: Router, private r:ActivatedRoute) {
+    this.r.queryParams.subscribe((params) => {
+      this.value = params['city'];
+
+    });
+  }
 
   public search() {
     this.router.navigate([], { queryParams: { city: this.value } });
