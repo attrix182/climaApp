@@ -39,14 +39,8 @@ export class ClimaCardComponent implements OnInit {
       case 'overcast clouds':
         this.icono = 'fas fa-cloud';
         break;
-      case 'overcast clouds':
-        this.icono = 'fas fa-cloud';
-        break;
       case 'light rain':
         this.icono = 'fas fa-cloud-rain';
-        break;
-      case 'light snow':
-        this.icono = 'fas fa-snowflake';
         break;
       case 'light snow':
         this.icono = 'fas fa-snowflake';
@@ -60,6 +54,8 @@ export class ClimaCardComponent implements OnInit {
           this.icono = 'fas fa-cloud-rain';
         } else if (desc.includes('sun')) {
           this.icono = 'fas fa-sun';
+        } else if (desc.includes('thunder')) {
+          this.icono = 'fas fa-bolt';
         }
     }
   }
